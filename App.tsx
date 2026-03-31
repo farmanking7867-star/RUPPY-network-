@@ -1,10 +1,12 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import React from "react";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+function App() {
+  return (
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>RUPPY Network is Loading...</h1>
+      <p>आपका माइनिंग ऐप यहाँ दिखेगा।</p>
+    </div>
+  );
+}
+
+export default App;
