@@ -8,16 +8,15 @@
 body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center}
 .wrap{padding:22px}
 .pill{border:1px solid #c28840;color:#c28840;padding:4px 12px;border-radius:14px;display:inline-block;font-size:12px;margin-bottom:18px}
-.coin{width:170px;height:170px;margin:auto;border-radius:50%;background:linear-gradient(145deg,#111,#222);box-shadow:0 0 28px #f9a825;display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:bold;letter-spacing:2px}
+.coin{width:170px;height:170px;margin:auto;border-radius:50%;background:#111;box-shadow:0 0 28px #f9a825;display:flex;align-items:center;justify-content:center;font-size:48px}
 .btn{margin:18px auto;padding:12px 24px;background:#f9a825;color:#000;border:none;border-radius:24px;font-weight:bold;width:80%;max-width:260px}
 h1{color:#f9a825;margin:12px 0 4px}
 .sub{color:#aaa;font-size:13px;margin-bottom:20px}
 .card{border:1px solid #333;border-radius:12px;padding:12px;margin:10px auto;max-width:300px;display:flex;gap:10px;text-align:left;align-items:flex-start}
 .ci{width:38px;height:38px;background:#1e1e1e;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.gb{margin:20px auto;width:85%;max-width:280px}
+.gb{margin:20px auto;padding:12px 20px;background:#f9a825;color:#000;border:none;border-radius:24px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:bold;width:85%;max-width:280px}
 .ft{font-size:11px;color:#666}
 </style>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -26,46 +25,13 @@ h1{color:#f9a825;margin:12px 0 4px}
   <button class="btn">BOOST MINING</button>
   <h1>RUPPY NETWORK</h1>
   <div class="sub">The premium Rupee mining experience</div>
+
   <div class="card"><div class="ci">⛏️</div><div><b>Mining</b><p>Mine 20 Rupee every 4 hours</p></div></div>
   <div class="card"><div class="ci">👥</div><div><b>Referral</b><p>Earn 40 Rupee per referral + 8% bonus</p></div></div>
   <div class="card"><div class="ci">🛡️</div><div><b>Withdrawal</b><p>Secure withdrawals via Binance & more</p></div></div>
 
-  <!-- Google Sign-In Button -->
-  <div id="googleSignInButton" class="gb"></div>
-
+  <button class="gb"><img src="https://img.icons8.com/color/20/google-logo.png">Sign in with Google</button>
   <div class="ft">By continuing, you agree to our Terms & Privacy Policy.</div>
 </div>
-
-<script>
-  // Web OAuth Client ID
-  const clientId = '791994103117-0qnp7laoeppcsf7h8c4h865u6e5ei3bc.apps.googleusercontent.com';
-
-  function handleCredentialResponse(response) {
-      try {
-          const payload = JSON.parse(atob(response.credential.split('.')[1]));
-          if(payload.email) {
-              alert('Signed in: ' + payload.email);
-              // आप यहाँ user info आगे use कर सकते हो
-          }
-      } catch(e) {
-          console.error(e);
-      }
-  }
-
-  window.onload = function() {
-      google.accounts.id.initialize({
-          client_id: clientId,
-          callback: handleCredentialResponse
-      });
-
-      google.accounts.id.renderButton(
-          document.getElementById('googleSignInButton'),
-          { theme: 'outline', size: 'large', width: '250' }
-      );
-
-      // Optional: auto popup
-      google.accounts.id.prompt();
-  }
-</script>
 </body>
 </html>
