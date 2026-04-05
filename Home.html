@@ -21,20 +21,44 @@ h1{color:#f9a825;margin:12px 0 4px}
 </head>
 <body>
 <div class="wrap">
-<div class="pill">VIP PREMIUM •</div>
-<div class="coin"><span>R</span></div>
-<button class="btn">BOOST MINING</button>
-<h1>RUPPY NETWORK</h1>
-<div class="sub">The premium Rupee mining experience</div>
-<div class="card"><div class="ci">⛏️</div><div><b>Mining</b><p>Mine 20 Rupee every 4 hours</p></div></div>
-<div class="card"><div class="ci">👥</div><div><b>Referral</b><p>Earn 40 Rupee per referral + 8% bonus</p></div></div>
-<div class="card"><div class="ci">🛡️</div><div><b>Withdrawal</b><p>Secure withdrawals via Binance & more</p></div></div>
-<div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="onSignIn"></div>
-<div class="g_id_signin gb" data-type="standard"></div>
-<div class="ft">By continuing, you agree to our Terms & Privacy Policy.</div>
+  <div class="pill">VIP PREMIUM •</div>
+  <div class="coin"><span>R</span></div>
+  <button class="btn">BOOST MINING</button>
+  <h1>RUPPY NETWORK</h1>
+  <div class="sub">The premium Rupee mining experience</div>
+  <div class="card"><div class="ci">⛏️</div><div><b>Mining</b><p>Mine 20 Rupee every 4 hours</p></div></div>
+  <div class="card"><div class="ci">👥</div><div><b>Referral</b><p>Earn 40 Rupee per referral + 8% bonus</p></div></div>
+  <div class="card"><div class="ci">🛡️</div><div><b>Withdrawal</b><p>Secure withdrawals via Binance & more</p></div></div>
+
+  <!-- Google Sign-In Button -->
+  <div id="googleSignInButton" class="gb"></div>
+
+  <div class="ft">By continuing, you agree to our Terms & Privacy Policy.</div>
 </div>
+
 <script>
-function onSignIn(r){try{const p=JSON.parse(atob(r.credential.split('.')[1]));if(p.email) alert('Signed in: '+p.email);}catch(e){}}
+  const clientId = '791994103117-0qnp7laoeppcsf7h8c4h865u6e5ei3bc.apps.googleusercontent.com';
+
+  function handleCredentialResponse(response) {
+      try {
+          const payload = JSON.parse(atob(response.credential.split('.')[1]));
+          if(payload.email) alert('Signed in: ' + payload.email);
+      } catch(e) {
+          console.error(e);
+      }
+  }
+
+  window.onload = function() {
+      google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+          document.getElementById('googleSignInButton'),
+          { theme: 'outline', size: 'large', width: '250' }
+      );
+      google.accounts.id.prompt(); // optional auto popup
+  }
 </script>
 </body>
 </html>
