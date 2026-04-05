@@ -18,6 +18,7 @@ h1{color:#f9a825;margin:12px 0 4px}
 .ft{font-size:11px;color:#666}
 </style>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -31,10 +32,12 @@ h1{color:#f9a825;margin:12px 0 4px}
 <div class="card"><div class="ci">🛡️</div><div><b>Withdrawal</b><p>Secure withdrawals via Binance & more</p></div></div>
 <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="onSignIn"></div>
 <div class="g_id_signin gb" data-type="standard"></div>
+<button class="btn" onclick="supabase.auth.signInWithOAuth({ provider: 'facebook' })">LOGIN WITH FACEBOOK</button>
 <div class="ft">By continuing, you agree to our Terms & Privacy Policy.</div>
 </div>
 <script>
 function onSignIn(r){try{const p=JSON.parse(atob(r.credential.split('.')[1]));if(p.email) alert('Signed in: '+p.email);}catch(e){}}
+const supabase = supabase.createClient('YOUR_SUPABASE_URL','YOUR_ANON_KEY');
 </script>
 </body>
 </html>
