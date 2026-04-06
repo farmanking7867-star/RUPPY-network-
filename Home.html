@@ -37,7 +37,7 @@ h1{color:#f9a825;margin:12px 0 4px}
 </div>
 <script>
 function onSignIn(r){try{const p=JSON.parse(atob(r.credential.split('.')[1]));if(p.email) alert('Signed in: '+p.email);}catch(e){}}
-const sb = supabase.createClient('https://cdqtcsxvxzwdobznaeyq.supabase.co','sb_publishable_kns-4NcTIQTmvj50yziD3Q_TuaqHLOt');
+const sb = supabase.createClient('https://cdqtcsxvxzwdobznaeyq.supabase.co','sb_publishable_kns-4NcTIQTmvj50yziD3Q_TuaqHLOt');alert('script chal raha hai');
 function fbLogin(){ sb.auth.signInWithOAuth({ provider: 'facebook' }); }
 </script>
 </body>
