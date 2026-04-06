@@ -33,7 +33,7 @@ a{color:#aaa;text-decoration:none}
 <div class="card"><div class="ci">🛡️</div><div><b>Withdrawal</b><p>Secure withdrawals via Binance & more</p></div></div>
 <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="onSignIn"></div>
 <div class="g_id_signin gb" data-type="standard"></div>
-<button onclick="fbLogin()" class="gb" style="background:#1877F2;color:#fff;border:none;border-radius:24px;font-weight:bold;padding:12px;cursor:pointer">LOGIN WITH FACEBOOK</button>
+<button onclick="fbLogin()" class="gb" style="background:#000;color:#fff;border:none;font-weight:bold;padding:12px">LOGIN WITH FACEBOOK</button>
 <div class="ft">
 <a href="privacy.html">Privacy</a> • <a href="services.html">Services</a> • <a href="terms.html">Terms</a><br>
 By continuing, you agree to our Terms & Privacy Policy.
@@ -41,22 +41,8 @@ By continuing, you agree to our Terms & Privacy Policy.
 </div>
 <script>
 function onSignIn(r){try{const p=JSON.parse(atob(r.credential.split('.')[1]));if(p.email) alert('Signed in: '+p.email);}catch(e){}}
-
-// --- Sahi Supabase Config ---
-const supabaseUrl = 'https://fvvdurcxpslohndlsivpk.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2dmR1cmN4cHNsb2hkbHNpdnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzODIxNzIsImV4cCI6MjA5MDk1ODE3Mn0.zN5VMdNvelevCyZ6hqucsYufaCSHbDOTnpB9_rItKo8';
-
-const sb = supabase.createClient(supabaseUrl, supabaseKey);
-
-async function fbLogin() {
-  const { error } = await sb.auth.signInWithOAuth({
-    provider: 'facebook',
-    options: {
-      redirectTo: supabaseUrl + '/auth/v1/callback'
-    }
-  });
-  if (error) alert('Error: ' + error.message);
-}
+const sb = supabase.createClient('https://fvvdurcxpslohndlsivpk.supabase.co', 'sb_publishable_kns-4NcTIQTmvj50yziD3Q_TuaqHLOt');
+function fbLogin(){ sb.auth.signInWithOAuth({ provider: 'facebook' }); }
 </script>
 </body>
 </html>
