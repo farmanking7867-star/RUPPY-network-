@@ -42,17 +42,17 @@ By continuing, you agree to our Terms & Privacy Policy.
 <script>
 function onSignIn(r){try{const p=JSON.parse(atob(r.credential.split('.')[1]));if(p.email) alert('Signed in: '+p.email);}catch(e){}}
 
-// --- Supabase Setup with your NEW Key ---
-const sb = supabase.createClient(
-  'https://fvvdurcxpslohndlsivpk.supabase.co', 
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2dmR1cmN4cHNsb2hkbHNpdnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzODIxNzIsImV4cCI6MjA5MDk1ODE3Mn0.zN5VMdNvelevCyZ6hqucsYufaCSHbDOTnpB9_rItKo8'
-);
+// --- Sahi Supabase Config ---
+const supabaseUrl = 'https://fvvdurcxpslohndlsivpk.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ2dmR1cmN4cHNsb2hkbHNpdnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzODIxNzIsImV4cCI6MjA5MDk1ODE3Mn0.zN5VMdNvelevCyZ6hqucsYufaCSHbDOTnpB9_rItKo8';
+
+const sb = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function fbLogin() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'facebook',
     options: {
-      redirectTo: 'https://fvvdurcxpslohndlsivpk.supabase.co/auth/v1/callback'
+      redirectTo: supabaseUrl + '/auth/v1/callback'
     }
   });
   if (error) alert('Error: ' + error.message);
